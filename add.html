@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<title>Cygate Admin</title>
+
+	<script type="text/javascript" src="jq.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div class="center">
+		Antal lag: <input type="number" onchange="writeTeams();" id="numTeams" />
+	</div>
+	<form id="teamHandler" class="center">
+		
+	</form>
+</div>
+
+<script type="text/javascript">
+	var writeTeams = function() {
+		$('#teamHandler').html("");
+		var numTeams = $('#numTeams').val();
+		
+		if(numTeams > 0){
+			for (var i = 0; i < numTeams; i++) {
+				$('#teamHandler').append("Team " + (i+1) + ": <input type='text' id='team" + (i+1) + "' name='team" + (i+1) + "'><br>");
+			};
+			$('#teamHandler').append("<input type='hidden' name='numTeams' value='"+numTeams+"'>");
+			$('#teamHandler').append("<button onclick='addTeams(); return false;' class='btn btn-success'>Lägg till!</button>");
+		}
+	}
+	var addTeams = function() {
+		var teams = new Array(1);
+		var numTeams = $('#numTeams').val();
+
+		var vals = $('#teamHandler').serialize();
+		
+		$.post('http://cygate.neq3.com/addteams.php', vals).done(function(data){
+			alert(data);
+		});
+
+	}
+</script>
+</body>
+</html>

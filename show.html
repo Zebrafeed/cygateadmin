@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Logic</title>
+
+	<script type="text/javascript" src="jq.js"></script>
+	<link type="text/css" rel="stylesheet" href="bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="bootstrap-responsive.min.css">
+	<link type="text/css" rel="stylesheet" href="style2.css">
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<button onclick="return false;" id="btn" class="btn btn-warning">Update!</button>
+		<div id="load">
+
+		</div>
+	</div>
+	<hr>
+	<div id="footer">
+		<div id="footertext" class="center">
+			Made by: Zebrafeed Studio
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			loadData();
+			$('#btn').click(function(){
+				loadData();
+			});
+		});
+
+		var loadData = function(){
+			$('#load').html("Laddar resultat...");
+			$('#load').load('http://cygate.neq3.com/data.php #content');
+		}
+	</script>
+</body>
+</html>

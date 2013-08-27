@@ -18,14 +18,27 @@
 	<div id="menu" class="center">
 		<div id="main">
 			<h3>Alternativ</h3>
-			<button class="btn">Lägg till lag</button>
-			<button class="btn">Visa lag</button>
+			<button id="add" class="btn">Lägg till lag</button>
+			<button id="show" class="btn">Visa lag</button>
 		</div>
 		<div id="danger">
-			<h3>DANGER ZONE</h3>
-			<button class="btn btn-danger">TA BORT ALLA LAG</button>
+			<h2>DANGER ZONE</h2>
+			<p>Dundundundun dun!</p>
+			<button id="delete" class="btn btn-danger">TA BORT ALLA LAG</button>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('#add').click(function(){
+		window.location = "add.html";
+	});
+	$('#show').click(function(){
+		window.location = "show.html";
+	});
+	$('#delete').click(function(){
+		window.location = "delete.html";
+	});
+</script>
 </body>
 </html>

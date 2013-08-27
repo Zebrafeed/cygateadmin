@@ -48,7 +48,7 @@
 			i++;
 		}
 
-		$.post("http://192.168.1.80/cygateadmin/addteams.php", {teams: teams}, function(data){
+		$.post("http://cygate.neq3.com/addteams.php", {teams: teams}, function(data){
 			$('#teamHandler').html("<h1>"+data+"</h1>");
 		});
 

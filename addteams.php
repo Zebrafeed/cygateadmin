@@ -2,24 +2,11 @@
 	require 'connect.php';
 	header("Access-Control-Allow-Origin: *");
 
-	$numteams = $_POST['numTeams'];
-	$team = $_POST['team1'];
+	$team = $_POST['teams'];
+	$numTeams = sizeof($team);
 
-	$sql = mysql_query("INSERT INTO `cygate`(`lag`, `poang`) VALUES ('wat','0')");
-	
-	if ($sql) {
-		echo "Success";
-	}else{
-		echo "Fail";
+	for ($i=0; $i < $numTeams; $i++) { 
+		$sql = mysql_query("INSERT INTO `cygate`(`lag`, `poang`) VALUES ('$team[$i]','0')") or die(mysql_error());
 	}
-
-	/*
-	for ($i=0; $i < numteams; $i++) { 
-		$team = $_POST['team' . (i+1)];
-		echo team . "<br>";
-		$sql = mysql_query("INSERT INTO cygate VALUES ('$team')");
-		if($sql){
-			echo "Posted";
-		}*/
-	}
+	echo "Lag tillagda";
 ?>

@@ -37,15 +37,22 @@
 		}
 	}
 	var addTeams = function() {
-		var teams = new Array(1);
+		var teams = new Array();
 		var numTeams = $('#numTeams').val();
 
-		var vals = $('#teamHandler').serialize();
-		
-		$.post('http://cygate.neq3.com/addteams.php', vals).done(function(data){
-			alert(data);
+		var i = 0;
+
+		while(i < (numTeams)){
+			var team = $('#team'+(i+1));
+			teams.push(team.val());
+			i++;
+		}
+
+		$.post("http://192.168.1.80/cygateadmin/addteams.php", {teams: teams}, function(data){
+			$('#teamHandler').html("<h1>"+data+"</h1>");
 		});
 
+		return false;
 	}
 </script>
 </body>
